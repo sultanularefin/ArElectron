@@ -1,7 +1,20 @@
 import React from 'react'
 import { button_color } from '../../ui_utils/important_colors'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGithub} from "@fortawesome/free-brands-svg-icons/faGithub";
+import {
+  // faPla
+} from "@fortawesome/free-brands-svg-icons";
+
+import {
+
+
+  // faPaperPlane,
+  faCircle,
+  faCirclePlay,
+  // faCirclePause,
+} from "@fortawesome/free-solid-svg-icons";
+
+
 // import app_style from "./app.module.css";
 // import styles from '/app.css';  // Importing the CSS module
 
@@ -139,22 +152,26 @@ const My_Work: React.FC<My_Work_Props> = ({}) => {
         justifyContent: 'space-around',
         alignItems: 'center',
         alignContent: 'center',
-        backgroundColor: 'cyan'
+        backgroundColor: 'black'
       }}
     >
-      <div className="pane" style={{ marginLeft: 20 }}>
-        <span className="icon icon-record" style={{ color: button_color }}>
+      <FontAwesomeIcon
+        icon={faCircle}
+        // onClick={handleClickEmailSubscription}
+        // className={SubscriptionMobileStyles.iconMobile}
+        style={{
+          color: button_color
+        }}
+      />
 
-
-          <label style={{ color: 'floralwhite', marginLeft: 20 }}>Catarpillar</label>
-        </span>
-        <div className="inline" style={{ marginLeft: 32, color: 'floralwhite' }}>
-          0h 20 m
-        </div>
+      <span className="icon icon-record" style={{ color: button_color }}>
+        <label style={{ color: 'floralwhite', marginLeft: 20 }}>Task Name</label>
+      </span>
+      <div className="inline" style={{ marginLeft: 32, color: 'floralwhite' }}>
+        0h 20 m
       </div>
 
-      {/*part 2 begins here*/}
-      <div className="pane" style={{ marginLeft: 20 }}>
+      {
         <div
           id="playAction"
           className="pane-one-third sidebar"
@@ -162,24 +179,25 @@ const My_Work: React.FC<My_Work_Props> = ({}) => {
             playToStop()
             return
           }}
-          style={{ backgroundColor: 'black' }}
+          style={{
+            // backgroundColor: 'black'
+        }}
         >
 
           <FontAwesomeIcon
-            icon={faGithub}
+            icon={faCirclePlay}
             // onClick={handleClickEmailSubscription}
             // className={SubscriptionMobileStyles.iconMobile}
-            style={{}}
+            style={{
+              color: button_color
+            }}
           />
 
-
-          <i
-            className="fa fa-play-circle-o"
-            aria-hidden="true"
-            style={{ fontSize: 40, color: '#9ff722', backgroundColor: 'black' }}
-          />
         </div>
+      }
 
+      {/*part 2 begins here*/}
+      <div className="pane" style={{ marginLeft: 20 }}>
         <div
           id="stopAction"
           className="pane-one-third sidebar"
