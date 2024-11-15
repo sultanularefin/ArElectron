@@ -3,6 +3,13 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
+
+
+
+// import { ipcMain } from 'electron';
+import screenshot from 'screenshot-desktop';
+
+
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -13,6 +20,7 @@ function createWindow(): void {
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
+
       sandbox: false
     }
   })
@@ -72,3 +80,16 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
+
+
+
+
+
+ipcMain.handle('take-screenshot', async () => {
+  try {
+    const buffer = await screenshot();
+    return buffer.toString('base64'); // Return as a Base64 string
+  } catch (error) {
+    throw new Error('Failed to take screenshot');
+  }
+});

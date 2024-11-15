@@ -14,7 +14,10 @@ module.exports = {
     // "@typescript-eslint/no-unused-vars":"off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-empty-interface":"false",
-    '@typescript-eslint/no-unused-vars': ['warn', { 'varsIgnorePattern': '^_' }]
+    // '@typescript-eslint/no-unused-vars': ['warn', { 'varsIgnorePattern': '^_' }],
+    // '@typescript-eslint/no-unused-vars': 'off', // Turn off the rule completely
+    // '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+    '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
 
   }
 }

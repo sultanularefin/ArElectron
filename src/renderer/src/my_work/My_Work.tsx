@@ -13,20 +13,23 @@ import {
   faCirclePlay,
   // faCirclePause,
 } from "@fortawesome/free-solid-svg-icons";
+// import captureScreen from "@renderer/my_work/custom";
 
 
 // import app_style from "./app.module.css";
 // import styles from '/app.css';  // Importing the CSS module
 
 // import styles from './styles.module.css' // Importing the CSS module
-
+// const moment = require('moment');
+import moment from "moment";
+// import captureScreen from "@renderer/my_work/custom";
 interface My_Work_Props {}
 
 const My_Work: React.FC<My_Work_Props> = ({}) => {
   const playToStop = () => {
     console.log('a')
 
-    const moment = require('moment')
+
     moment().format()
 
     /*jQuery("#playAction").css({
@@ -48,7 +51,7 @@ const My_Work: React.FC<My_Work_Props> = ({}) => {
     //return 0;
 
     const x = moment().format('mm')
-    // const now = moment().format("D-MMM-YY HH-mm");
+
 
     const n = parseInt(x)
 
@@ -59,13 +62,15 @@ const My_Work: React.FC<My_Work_Props> = ({}) => {
       //console.log(numbers[i]);
     }
     //console.log("x");
-    for (let i = 1; i <= 60 - n; i++) {
-      //console.log(i);
-      //console.log(numbers[i]);
-      // setInterval(captureScreen, 1000 * 60, now, i);
-    }
+    /*
+        const now = moment().format("D-MMM-YY HH-mm");
+        for (let i = 1; i <= 60 - n; i++) {
+          //console.log(i);
+          //console.log(numbers[i]);
+          setInterval(captureScreen, 1000 * 60, now, i);
+        }
 
-    // setInterval(captureScreen, 60000);
+        setInterval(captureScreen, 60000);*/
 
     // 1000 means 1 second 60*1000 means 1 minute
   }
