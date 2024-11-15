@@ -6,6 +6,13 @@ import Empty_View_With_Height_Only from "@renderer/my_work/empty_View/Empty_View
 import Timer from "@renderer/my_work/timer/Timer";
 import Timer_Buttons from "@renderer/my_work/timerButtons/Timer_Buttons";
 
+
+import {config} from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+// import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
+// for fontawesome ends here
+
 function App(): JSX.Element {
   const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
 
