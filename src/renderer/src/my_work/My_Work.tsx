@@ -1,85 +1,77 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { button_color } from '../../ui_utils/important_colors'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-  // faPla
-} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {} from // faPla
+'@fortawesome/free-brands-svg-icons'
 
 import {
-
-
   // faPaperPlane,
   faCircle,
-  faCirclePlay,
+  faCirclePlay
   // faCirclePause,
-} from "@fortawesome/free-solid-svg-icons";
-// import captureScreen from "@renderer/my_work/custom";
+} from '@fortawesome/free-solid-svg-icons'
+import {useDispatch, useSelector} from "react-redux";
+import {select_is_playing, start_play} from "../../lib/features/counter/counterSlice";
+import {capture_Screenshot_renderer} from "@renderer/my_work/custom_renderer";
 
+// import moment from 'moment'
+// import captureScreen from "@renderer/my_work/custom_renderer";
 
-// import app_style from "./app.module.css";
-// import styles from '/app.css';  // Importing the CSS module
-
-// import styles from './styles.module.css' // Importing the CSS module
-// const moment = require('moment');
-import moment from "moment";
-// import captureScreen from "@renderer/my_work/custom";
 interface My_Work_Props {}
 
 const My_Work: React.FC<My_Work_Props> = ({}) => {
+
+  const dispatch = useDispatch();
+
+  const is_Playing_RTK:boolean = useSelector(select_is_playing);
+
+
+  useEffect(() => {
+
+    let main_f1 = async () => {
+
+      if(is_Playing_RTK){
+
+        const png_image_path= await capture_Screenshot_renderer();
+
+        console.log("png_image_path: ",png_image_path);
+
+        return;
+      }
+
+
+    };
+
+    main_f1();
+
+  }, [
+    is_Playing_RTK,
+    // driver_Login__Data_OLD,
+    // location
+  ]);
+
+
+
+
   const playToStop = () => {
-    console.log('a')
+    // console.log('a');
 
 
-    moment().format()
-
-    /*jQuery("#playAction").css({
-      'visibility': 'hidden',
-      'position': 'absolute',
-      'margin-top': '-100px',
-      'margin-left': '-100px'
-    });*/
-
-    /* jQuery("#stopAction").css({
-       'visibility': 'visible',
-       'position': 'static',
-       'margin-top': '0px',
-       'margin-left': '0px'
-     });*/
-
-    console.log('AT playAction')
-
-    //return 0;
-
-    const x = moment().format('mm')
+    dispatch(start_play(true))
 
 
-    const n = parseInt(x)
 
-    const numbers: number[] = []
-
-    for (let i = 1; i <= 60 - n; i++) {
-      numbers[i] = 0
-      //console.log(numbers[i]);
-    }
-    //console.log("x");
-    /*
-        const now = moment().format("D-MMM-YY HH-mm");
-        for (let i = 1; i <= 60 - n; i++) {
-          //console.log(i);
-          //console.log(numbers[i]);
-          setInterval(captureScreen, 1000 * 60, now, i);
-        }
-
-        setInterval(captureScreen, 60000);*/
+    // setInterval(captureScreen, 1);did
+    // declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 
     // 1000 means 1 second 60*1000 means 1 minute
   }
 
-  const stopToPlay = () => {
+/*  const stopToPlay = () => {
     console.log('b')
     //return 0;
 
-    /* jQuery("#stopAction").css({
+     jQuery("#stopAction").css({
        'visibility': 'hidden',
        'position': 'absolute',
        'margin-top': '-100px',
@@ -91,11 +83,11 @@ const My_Work: React.FC<My_Work_Props> = ({}) => {
        'position': 'static',
        'margin-top': '0px',
        'margin-left': '0px'
-     });*/
+     });
 
     console.log(' AT stopAction')
     return 0
-  }
+  }*/
 
   //function togglePlayStop(action) {
 
@@ -181,14 +173,15 @@ const My_Work: React.FC<My_Work_Props> = ({}) => {
           id="playAction"
           className="pane-one-third sidebar"
           onClick={() => {
-            playToStop()
-            return
+            playToStop();
+            return;
           }}
-          style={{
-            // backgroundColor: 'black'
-        }}
+          style={
+            {
+              // backgroundColor: 'black'
+            }
+          }
         >
-
           <FontAwesomeIcon
             icon={faCirclePlay}
             // onClick={handleClickEmailSubscription}
@@ -197,12 +190,11 @@ const My_Work: React.FC<My_Work_Props> = ({}) => {
               color: button_color
             }}
           />
-
         </div>
       }
 
       {/*part 2 begins here*/}
-      <div className="pane" style={{ marginLeft: 20 }}>
+      {/*<div className="pane" style={{ marginLeft: 20 }}>
         <div
           id="stopAction"
           className="pane-one-third sidebar"
@@ -223,7 +215,7 @@ const My_Work: React.FC<My_Work_Props> = ({}) => {
             style={{ fontSize: 40, color: '#9ff722', backgroundColor: 'black' }}
           />
         </div>
-      </div>
+      </div>*/}
     </div>
     /*
     <div className="window-content">

@@ -7,7 +7,8 @@ import icon from '../../resources/icon.png?asset'
 
 
 // import { ipcMain } from 'electron';
-import screenshot from 'screenshot-desktop';
+
+import {take_screen_shot_main} from "./custom_main";
 
 
 function createWindow(): void {
@@ -19,6 +20,14 @@ function createWindow(): void {
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
+      // nodeIntegration: true, // Enable Node.js integration
+      // contextIsolation: false, // Disable context isolation
+
+
+      // contextIsolation: true, // Recommended for security
+      // nodeIntegration: false, // Keep Node.js integration disabled
+
+
       preload: join(__dirname, '../preload/index.js'),
 
       sandbox: false
@@ -58,7 +67,17 @@ app.whenReady().then(() => {
   })
 
   // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  ipcMain.on('ping', () => {
+
+    console.log('pong');
+
+
+    // import { ipcMain } from 'electron';
+    // import screenshot from 'screenshot-desktop';
+
+
+
+  });
 
   createWindow()
 
@@ -82,14 +101,10 @@ app.on('window-all-closed', () => {
 // code. You can also put them in separate files and require them here.
 
 
-
-
-
 ipcMain.handle('take-screenshot', async () => {
-  try {
-    const buffer = await screenshot();
-    return buffer.toString('base64'); // Return as a Base64 string
-  } catch (error) {
-    throw new Error('Failed to take screenshot');
-  }
+
+  return take_screen_shot_main();
+
 });
+
+

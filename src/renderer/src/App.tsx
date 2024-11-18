@@ -14,7 +14,9 @@ config.autoAddCss = false
 // for fontawesome ends here
 
 function App(): JSX.Element {
-  const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+  const ipcHandle = (): void => {
+    window.electron.ipcRenderer.send('ping');
+  }
 
   return (
     <>
