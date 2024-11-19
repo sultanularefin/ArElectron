@@ -17,6 +17,9 @@ export interface CounterState {
   hour_Text: string,
   min_Text: string,
   second_Text: string,
+
+
+  apiInvocation_Timer: 0,
 }
 
 const initialState: CounterState = {
@@ -30,10 +33,38 @@ const initialState: CounterState = {
   hour_Text: "00",
   min_Text: "00",
   second_Text: "00",
+
+
+  apiInvocation_Timer: 0,
 }
 
 
 /*eslint no-unused-vars: "warn"*/
+
+
+const updateAPI_invocation_Timer_2 = (state:any, action: PayloadAction<number>) => {
+
+
+  state.apiInvocation_Timer = action.payload;
+}
+
+/*updateAPI_invocation_Timer: (state, action: PayloadAction<number>) => {
+  state.apiInvocation_Timer = action.payload;
+},
+  */
+
+
+const reset_minute_2 =  (state:any, _action: PayloadAction<boolean>) => {
+
+  state.minutes_State = 0;
+  state.min_Text = "00";
+}
+const reset_second_2 =  (state:any, _action: PayloadAction<boolean>) => {
+
+  state.seconds_State= 0;
+  state.second_Text = `00`;
+}
+
 
 const increment_second_2 = (state:any, _action: PayloadAction<boolean>) => {
 
@@ -42,10 +73,10 @@ const increment_second_2 = (state:any, _action: PayloadAction<boolean>) => {
   const new_second = state.seconds_State+1;
   if (new_second <10) {
 
-    state.second_Text = `0${new_second}:`;
+    state.second_Text = `0${new_second}`;
 
   } else{
-    state.second_Text = `${new_second}:`;
+    state.second_Text = `${new_second}`;
 
   }
 
@@ -212,6 +243,13 @@ export const counterSlice = createSlice({
     increment_minute: increment_minute_2,
     increment_hour: increment_hour_2,
 
+    updateAPI_invocation_Timer: updateAPI_invocation_Timer_2,
+
+    // reset part begins here
+
+    reset_second: reset_second_2,
+    reset_minute: reset_minute_2,
+
 
 
   },
@@ -223,10 +261,20 @@ export const {
   decrement,
   incrementByAmount,
   start_play,
+
+
   increment_second,
   increment_minute,
   increment_hour,
+
+  // reset begins here
+  reset_second,
+  reset_minute,
+
+
+  updateAPI_invocation_Timer, // not yet used
 } = counterSlice.actions
+
 
 export const select_is_playing = (state: RootState) => state.counter.is_playing
 
@@ -242,6 +290,8 @@ export const select_Hour_Text = (state: RootState) => state.counter.hour_Text
 export const select_Min_Text = (state: RootState) => state.counter.min_Text
 export const select_Second_Text = (state: RootState) => state.counter.second_Text
 
+
+export const selectTimer = (state: RootState) => state.counter.apiInvocation_Timer;
 
 
 export default counterSlice.reducer
