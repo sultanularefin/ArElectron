@@ -10,6 +10,8 @@ import Timer_Buttons from "@renderer/my_work/timerButtons/Timer_Buttons";
 import {config} from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 // import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css'
+
+import main_Style from './assets/main.module.css';
 config.autoAddCss = false
 // for fontawesome ends here
 
@@ -20,22 +22,57 @@ function App(): JSX.Element {
 
   return (
     <>
-      <img alt="logo" className="logo" src={electronLogo} />
-      <div className="creator">Powered by electron-vite</div>
-      <div className="text">
-        Build an Electron app with <span className="react">React</span>
-        &nbsp;and <span className="ts">TypeScript</span>
+      <img alt="logo"
+           className={main_Style.logo}
+           // className="logo"
+
+           src={electronLogo} />
+      <div
+        className={main_Style.creator}
+        // className="creator"
+
+      >Powered by electron-vite</div>
+      <div
+        className={main_Style.text}
+        // className="text"
+      >
+        Build an Electron app with <span
+
+        className={main_Style.react}
+        // className="react"
+
+      >React</span>
+        &nbsp;and <span
+        className={main_Style.ts}
+        // className="ts"
+
+      >TypeScript</span>
       </div>
-      <p className="tip">
+      <p
+        className={main_Style.tip}
+        // className="tip"
+
+      >
         Please try pressing <code>F12</code> to open the devTool
       </p>
-      <div className="actions">
-        <div className="action">
+      <div
+        // className="actions"
+        className={main_Style.actions}
+
+      >
+        <div
+          // className="action"
+          className={main_Style.action}
+        >
           <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">
             Documentation
           </a>
         </div>
-        <div className="action">
+        <div
+
+          className={main_Style.action}
+          // className="action"
+        >
           <a target="_blank" rel="noreferrer" onClick={ipcHandle}>
             Send IPC
           </a>

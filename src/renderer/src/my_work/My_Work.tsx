@@ -7,12 +7,25 @@ import {} from // faPla
 import {
   // faPaperPlane,
   faCircle,
-  faCirclePlay
+  // faCirclePlay,
   // faCirclePause,
+  // faCircleStop,
 } from '@fortawesome/free-solid-svg-icons'
-import {useDispatch, useSelector} from "react-redux";
-import {select_is_playing, start_play} from "../../lib/features/counter/counterSlice";
+import {
+  // useDispatch,
+  useSelector
+} from "react-redux";
+import {
+  select_is_playing,
+  select_State_Hours,
+  select_State_Mins,
+  // start_play
+} from "../../lib/features/counter/counterSlice";
 import {capture_Screenshot_renderer} from "@renderer/my_work/custom_renderer";
+// import main_Style from "@renderer/assets/main.module.css";
+// import my_work_style from "./my_work_styles.module.css";
+import Stop_Button from "@renderer/my_work/play_pause_stop_buttons/Stop_Button";
+import Play_Button from "@renderer/my_work/play_pause_stop_buttons/Play_Button";
 
 // import moment from 'moment'
 // import captureScreen from "@renderer/my_work/custom_renderer";
@@ -21,10 +34,11 @@ interface My_Work_Props {}
 
 const My_Work: React.FC<My_Work_Props> = ({}) => {
 
-  const dispatch = useDispatch();
+
 
   const is_Playing_RTK:boolean = useSelector(select_is_playing);
-
+  const hours:number = useSelector(select_State_Hours);
+  const mins:number = useSelector(select_State_Mins);
 
   useEffect(() => {
 
@@ -51,93 +65,10 @@ const My_Work: React.FC<My_Work_Props> = ({}) => {
   ]);
 
 
-
-
-  const playToStop = () => {
-    // console.log('a');
-
-
-    dispatch(start_play(true))
+  // const dispatch = useDispatch();
 
 
 
-    // setInterval(captureScreen, 1);did
-    // declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
-
-    // 1000 means 1 second 60*1000 means 1 minute
-  }
-
-/*  const stopToPlay = () => {
-    console.log('b')
-    //return 0;
-
-     jQuery("#stopAction").css({
-       'visibility': 'hidden',
-       'position': 'absolute',
-       'margin-top': '-100px',
-       'margin-left': '-100px'
-     });
-
-     jQuery("#playAction").css({
-       'visibility': 'visible',
-       'position': 'static',
-       'margin-top': '0px',
-       'margin-left': '0px'
-     });
-
-    console.log(' AT stopAction')
-    return 0
-  }*/
-
-  //function togglePlayStop(action) {
-
-  //    if (action === "playAction") {
-
-  //        //jQuery("#playAction").addClass("playStopMakeHidden");
-
-  //        //jQuery("#playAction").ad(".playStopMakeHidden");
-
-  //        // jQuery("#stopAction").addClass("playStopMakeVisible");
-  //        //jQuery("#stopAction").css(".playStopMakeVisible");
-
-  //    }
-  //    if (action === "stopAction") {
-  //        //jQuery("#stopAction").addClass("playStopMakeHidden");
-
-  //    }
-
-  //    //var a = 12;
-  //    //console.log(a);
-  //    //return 0;
-  //}
-
-  /* const test=()=> {
-
-     console.log("At test");
-     return;
-   }*/
-
-  //function request() {
-  //    http.get(options, function (res) {
-  //        res.on('data', function (chunk) {
-  //            console.log(chunk);
-  //        });
-  //    }).on("error", function (e) {
-  //        console.log("Got error: " + e.message);
-  //    });
-  //}
-
-  //var now = moment().format("D-MMM-YY HH:mm");
-
-  //var count = 0;
-
-  //setInterval(captureScreen, 6000, now, ++count);
-
-  //captureScreen(now, count) = captureScreen(4 - Oct - 17 21:43, 1)
-
-  //problem is here count is always 1.
-  //so if date is same as previous then increment cookie count(count = count + 1);
-  //and then store in cookie.count value and now value.captureScreen(now, count)
 
   return (
     <div
@@ -165,33 +96,15 @@ const My_Work: React.FC<My_Work_Props> = ({}) => {
         <label style={{ color: 'floralwhite', marginLeft: 20 }}>Task Name</label>
       </span>
       <div className="inline" style={{ marginLeft: 32, color: 'floralwhite' }}>
-        0h 20 m
+        {/*0h 20 m*/} {`${hours} H ${mins} M`}
       </div>
 
-      {
-        <div
-          id="playAction"
-          className="pane-one-third sidebar"
-          onClick={() => {
-            playToStop();
-            return;
-          }}
-          style={
-            {
-              // backgroundColor: 'black'
-            }
-          }
-        >
-          <FontAwesomeIcon
-            icon={faCirclePlay}
-            // onClick={handleClickEmailSubscription}
-            // className={SubscriptionMobileStyles.iconMobile}
-            style={{
-              color: button_color
-            }}
-          />
-        </div>
-      }
+
+
+      <Play_Button/>
+      <Stop_Button/>
+
+
 
       {/*part 2 begins here*/}
       {/*<div className="pane" style={{ marginLeft: 20 }}>
@@ -233,7 +146,7 @@ const My_Work: React.FC<My_Work_Props> = ({}) => {
           id="playAction"
           className="pane-one-third sidebar"
           onClick={() => {
-            playToStop();
+            start_recording();
             return;
           }}
           style={{backgroundColor: 'black'}}

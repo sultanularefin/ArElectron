@@ -1,0 +1,44 @@
+
+
+
+.window1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+
+
+
+.button {
+  /*flex-shrink: 0;*/
+  /*padding: 6px;*/
+}
+
+.button .icon {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  /*border: 1px solid transparent;*/
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+  border-radius: 20px;
+  padding: 5px;
+  line-height: 38px;
+  font-size: 14px;
+  border-color: var(--ev-button-alt-border);
+  color: var(--ev-button-alt-text);
+  background-color: var(--ev-button-alt-bg);
+}
+
+.button .icon:hover {
+  border-color: var(--ev-button-alt-hover-border);
+  color: var(--ev-button-alt-hover-text);
+  background-color: var(--ev-button-alt-hover-bg);
+}

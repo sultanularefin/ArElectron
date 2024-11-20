@@ -228,15 +228,15 @@ const Timer: React.FC<Timer_Props> = ({}) => {
       >
         <span
 
-          id="hours"
+          // id="hours"
           className={TimeStyles.hours}
 
         >{hour_Text}:</span>
         <span
-          id="mins"
+          // id="mins"
         >{min_Text}:</span>
         <span
-          id="seconds"
+          // id="seconds"
         >{second_Text}</span>
       </div>
 

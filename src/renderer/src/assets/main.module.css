@@ -138,7 +138,14 @@ code {
   backdrop-filter: blur(24px);
 }
 
-.versions li {
+/*electronVersion*/
+/*chromeVersion*/
+/*nodeVersion*/
+
+
+.versions > .electronVersion,
+.versions > .chromeVersion,
+.versions > .nodeVersion{
   display: block;
   float: left;
   border-right: 1px solid var(--ev-c-gray-1);
@@ -150,6 +157,18 @@ code {
     border: none;
   }
 }
+/*.versions li {
+  display: block;
+  float: left;
+  border-right: 1px solid var(--ev-c-gray-1);
+  padding: 0 20px;
+  font-size: 14px;
+  line-height: 14px;
+  opacity: 0.8;
+  &:last-child {
+    border: none;
+  }
+}*/
 
 @media (max-width: 720px) {
   .text {
